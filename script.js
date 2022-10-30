@@ -1,7 +1,6 @@
 var tens = 0;
 var seconds = 0;
 var minutes = 0;
-var tensPlayer = 0;
 var secondsPlayer = 0;
 var minutesPlayer = 0;
 
@@ -18,10 +17,11 @@ var buttonReset = document.getElementById("btn-reset");
 var buttonPlus = document.getElementById("btn-plus");
 
 var interval;
-var intervalPlayer;
 var isStarted = false;
+var cntPlus = 0;
 
 function startTimer(){
+    //basic timer
     tens++;
 
     if(tens < 9){
@@ -46,43 +46,28 @@ function startTimer(){
         appendSeconds.innerHTML = "0" + seconds;
     }
     if(minutes > 9){
-        appendMinutes.innerHTML = "0"+ minutes;
+        appendMinutes.innerHTML = minutes;
     }
-};
 
-function startTimerPlayer(){
-    tensPlayer++;
+    //player timer
+    min = parseInt((cntPlus * 5) / 60);
+    minutesPlayer = minutes + min;
 
-    if(tensPlayer < 9){
-        appendTensPlayer.innerHTML = "0" + tensPlayer;
+    sec = (cntPlus * 5) % 60;
+    secondsPlayer = (seconds + sec) % 60;
+
+    if(seconds + sec > 59){
+        minutesPlayer += 1;
     }
-    if(tensPlayer > 9){
-        appendTensPlayer.innerHTML = tensPlayer;
-    }
-    if(tensPlayer > 99){
-        secondsPlayer++;
-        appendSecondsPlayer.innerHTML = "0" + secondsPlayer;
-        tensPlayer = 0;
-        appendTensPlayer.innerHTML = "0" + tensPlayer;
-    }
-    if(secondsPlayer > 9){
-        appendSecondsPlayer.innerHTML = secondsPlayer;
-    }
-    if(secondsPlayer > 59){
-        minutesPlayer++;
-        appendMinutesPlayer.innerHTML = "0" + minutesPlayer;
-        secondsPlayer = 0;
-        appendSecondsPlayer.innerHTML = "0" + secondsPlayer;
-    }
-    if(minutesPlayer > 9){
-        appendMinutesPlayer.innerHTML = "0"+ minutesPlayer;
-    }
+
+    appendTensPlayer.innerHTML = ('00' + tens).slice(-2);
+    appendSecondsPlayer.innerHTML = ('00' + secondsPlayer).slice(-2);
+    appendMinutesPlayer.innerHTML = ('00' + minutesPlayer).slice(-2);
 };
 
 buttonStart.onclick = function(){
     if(!isStarted){
         interval = setInterval(startTimer, 10);
-        intervalPlayer = setInterval(startTimerPlayer, 10);
         isStarted = true;
         buttonStart.style.display = "none";
         buttonStop.style.display = "block";
@@ -91,7 +76,6 @@ buttonStart.onclick = function(){
 
 buttonStop.onclick = function(){
     clearInterval(interval);
-    clearInterval(intervalPlayer);
     isStarted = false;
     buttonStart.style.display = "block";
     buttonStop.style.display = "none";
@@ -99,7 +83,6 @@ buttonStop.onclick = function(){
 
 buttonReset.onclick = function(){
     clearInterval(interval);
-    clearInterval(intervalPlayer);
     
     tens = 0;
     seconds = 0;
@@ -108,25 +91,26 @@ buttonReset.onclick = function(){
     appendSeconds.innerHTML = "00";
     appendMinutes.innerHTML = "00";
 
-    tensPlayer = 0;
-    secondsPlayer = 0;
-    minutesPlayer = 0;
     appendTensPlayer.innerHTML = "00";
     appendSecondsPlayer.innerHTML = "00";
     appendMinutesPlayer.innerHTML = "00";
 
     isStarted = false;
+    cntPlus = 0;
+
+    buttonStart.style.display = "block";
+    buttonStop.style.display = "none";
 };
 
 buttonPlus.onclick = function(){
     if(isStarted){
-        secondsPlayer += 5;
+        cntPlus++;
     }
 };
 
 document.body.onkeyup = function(e){
     if(isStarted & e.keyCode == 32){
-        secondsPlayer += 5;
+        cntPlus++;
     }
 };
 
