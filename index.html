@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="clock">
+            <h1 id="timer" class="timer">
+                <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="tens">00</span>
+            </h1>
+            <h1 id="timer-player" class="timer">
+                <span id="minutes-player">00</span>:<span id="seconds-player">00</span>:<span id="tens-player">00</span>
+            </h1>
+        </div>
+        <div id="buttons">
+            <button id="btn-start" tabindex="-1">START</button>
+            <button id="btn-stop" tabindex="-1">STOP</button>
+            <button id="btn-plus">+5 SEC</button>
+            <button id="btn-reset" tabindex="-1">RESET</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

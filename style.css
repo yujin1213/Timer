@@ -1,0 +1,52 @@
+body{
+    background-color: #292937;
+}
+#container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#clock{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: xx-large;
+    color: white;
+    margin: 70px 0;
+}
+.timer{
+    width: 270px;
+    margin: 0 50px;
+}
+#buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    width: 110px;
+    height: 55px;
+    border-radius: 50px;
+    font-size: large;
+    cursor: pointer;
+    margin: 20px;
+    background-color: transparent;
+}
+#btn-start{
+    border: 1px solid #20D643;
+    color: #20D643;
+}
+#btn-stop{
+    border: 1px solid #EF369A;
+    color: #EF369A;
+    display: none;
+}
+#btn-plus{
+    border: 1px solid #26B0FF;
+    color: #26B0FF;
+}
+#btn-reset{
+    border: 1px solid #8F68FF;
+    color: #8F68FF;
+}
