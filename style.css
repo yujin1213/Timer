@@ -13,11 +13,30 @@ body{
     align-items: center;
     font-size: xx-large;
     color: white;
-    margin: 70px 0;
+    margin: 70px 0 90px 0;
+}
+.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 40px;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 50px 30px;
+}
+#automobile{
+    border-color: #8EA3BC;
+}
+#person{
+    border-color: #989FC2;
+}
+#vs{
+    font-weight: 900;
+    color: #B8C0DC;
 }
 .timer{
     width: 270px;
-    margin: 0 50px;
+    margin: 30px 50px;
 }
 #buttons{
     display: flex;
